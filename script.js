@@ -1,16 +1,26 @@
 var timeEl = document.querySelector(".time");
+var startQuiz = document.querySelector("#startbutton");
 var secondsLeft = 76;
 
-function setTime() {
-  var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft;
+startQuiz.addEventListener("click", function(event){
+    event.preventDefault();
+    console.log(event);
+})
 
-    if(secondsLeft === 0) {
-      clearInterval(timerInterval);
-    }
+startQuiz.addEventListener("click", function setTime(){
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timeEl.textContent = secondsLeft;
 
-  }, 1000);
-}
+        if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+        }
+    }, 1000);
+})
 setTime();
-    
+
+
+
+
+
+
