@@ -19,6 +19,12 @@ startQuiz.addEventListener("click", function setTime(){
     }, 1000);
 })
 setTime();
+
+startQuiz.addEventListener("click", function(e){
+    e.preventDefault();
+    document.getElementById("container").style.display = "none";
+});
+
 //connect start button with questions - make it so that the answered question hides, then brings up the next
 //set up arrays
 var quizQuestions = [
