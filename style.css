@@ -13,9 +13,7 @@
     bottom: 0;
     left: 0;
     width: 1000px;
-    height: 500px;
-    
-    
+    height: 500px;      
 }
 
 #startpage {
@@ -37,9 +35,9 @@ button {
     
 }
 /*container for first question*/
-#container2 {
+#questionone {
     text-align: center;
-    background-color:green;
+    background-color:blue;
     position: absolute;
     margin: auto;
     top: 0;
@@ -50,9 +48,9 @@ button {
     height: 500px;
     display: none;
 }
-#container3 {
+#questiontwo {
     text-align: center;
-    background-color: blue;
+    background-color:green;
     position: absolute;
     margin: auto;
     top: 0;
