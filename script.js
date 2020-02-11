@@ -1,12 +1,14 @@
 //added timer
 var countDown = document.querySelector("#time");
 var startQuiz = document.querySelector("#startbutton");
-var secondsLeft = 76;
+var secondsLeft = 30;
 var startPrompt = document.querySelector("#start-prompt");
 var answerDiv = document.querySelector("#answers")
 var questionDiv = document.querySelector("#question")
 var questionIndex = 0;
+var count = document.querySelector("#count");
 var score = 0;
+var correctMessage = document.querySelector("#display");
 //prevent browser from refreshing
 //connect start button with hiding first block
 startQuiz.addEventListener("click", function(event){
@@ -69,6 +71,7 @@ function checkAnswer (userAnswer) {
     if(userAnswer === "true") {
          //if answer is correct add to their score
         score++;
+        count.textContent =score;
         renderQuestion();
     }
    else {
@@ -82,10 +85,6 @@ function checkAnswer (userAnswer) {
 
     //else 
 }
-
- 
-
-
 
 // go over the code above
 
