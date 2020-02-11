@@ -1,73 +1,141 @@
 //added timer
-var timeEl = document.querySelector(".time");
+var countDown = document.querySelector("#time");
 var startQuiz = document.querySelector("#startbutton");
 var secondsLeft = 76;
+var startPrompt = document.querySelector("#start-prompt");
+var answerDiv = document.querySelector("#answers")
+var questionDiv = document.querySelector("#question")
+var questionIndex = 0;
+var score = 0;
 //prevent browser from refreshing
 //connect start button with hiding first block
 startQuiz.addEventListener("click", function(event){
     event.preventDefault();
     console.log(event);
     document.getElementById("container").style.display = "none";
-    document.getElementById("questionone").style.display = "block";
-    var firstquestion = document.createElement("h2");
-    firstquestion.innerHTML = "this is h2";
-    document.getElementById("questionone").appendChild(firstquestion);
-})
-
-//connected timer with start button
-startQuiz.addEventListener("click", function setTime(){
+    document.getElementById("quiz").style.display = "block";
+    
+    renderQuestion();  
     var timerInterval = setInterval(function() {
         secondsLeft--;
-        timeEl.textContent = secondsLeft;
-
+        countDown.textContent = secondsLeft;
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
         }
     }, 1000);
-})
-setTime();
+});
 
-var quizQuestions = [
+function renderQuestion(){
+
+    //empty the question and answer divs before we append new stuff
+    questionDiv.innerHTML = "";
+    answerDiv.innerHTML = "";
+    if(questionIndex <= questions.length) {
+    questionDiv.textContent = questions[questionIndex].question;
+
+    for (let i = 0; i < questions[questionIndex].answers.length; i++) {
+        console.log("for loop running")
+        const answer = questions[questionIndex].answers[i].text;
+        const isCorrect = questions[questionIndex].answers[i].isCorrect
+        console.log("answer", answer);
+        console.log("isCorrect", isCorrect);
+
+         var btn = document.createElement("button");
+         btn.textContent = answer
+         btn.setAttribute("class", "btn btn-seconday");
+        btn.setAttribute("value", isCorrect)
+        answerDiv.append(btn);
+    }
+
+    questionIndex++;
+}
+else {
+    //call and endGame function 
+}
+};
+
+
+//event listener for when an answer is clicked that calls a checkAnswer function
+answerDiv.addEventListener("click", function(event) {
+    if(!event.target.matches("button")) return;
+    //need to pull value off of button that is clicked
+    var userAnswer = event.target.value;
+    checkAnswer(userAnswer);
+});
+
+//function to checkAnswer
+function checkAnswer (userAnswer) {
+    //see if answer is correct
+    if(userAnswer === "true") {
+         //if answer is correct add to their score
+        score++;
+        renderQuestion();
+    }
+   else {
+       //alert user or optionally you could change text in browser
+       alert("Sorry that was the wrong answer");
+    //rerun render Question function;
+    renderQuestion();
+   } 
+
+   
+
+    //else 
+}
+
+ 
+
+
+
+// go over the code above
+
+var questions = [
     {
-        question1: "Commonly used data types DO NOT include:",
-        answers1: [
+        question: "Commonly used data types DO NOT include:",
+        answers: [
             { text: "strings", isCorrect: false },
             { text: "booleans", isCorrect: false },
             { text: "alerts", isCorrect: true },
             { text: "numbers", isCorrect: false },
-        ],
-        question2: "The condition in an if/else statement is enclosed within___.",
-        answers2: [
+        ]
+    },
+    {
+        question: "The condition in an if/else statement is enclosed within___.",
+        answers: [
             { text: "quotes", isCorrect: false },
             { text: "curly brackets", isCorrect: false },
             { text: "parentheses", isCorrect: true },
             { text: "square brackets", isCorrect: false },
-        ],
-        question3: "Arrays in JavaScript can be used to store___.",
-        answers3: [
+        ]
+    },
+    { 
+        question: "Arrays in JavaScript can be used to store___.",
+        answers: [
             { text: "numbers and strings", isCorrect: false },
             { text: "other arrays", isCorrect: false },
             { text: "booleans", isCorrect: false },
             { text: "all of the above", isCorrect: true },
-        ],
-        question4: "String values must be enclosed within__ when being assigned to variables.",
-        answers4: [
+        ]
+    },
+    {
+        question: "String values must be enclosed within__ when being assigned to variables.",
+        answers: [
             { text: "commas", isCorrect: false },
             { text: "curly brackets", isCorrect: false },
             { text: "quotes", isCorrect: true },
             { text: "parentheses", isCorrect: false },
-        ],
-        question5: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        answers5: [
+        ]
+    },
+    {
+        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        answers: [
             { text: "javascript", isCorrect: false },
             { text: "terminal bash", isCorrect: false },
             { text: "for loops", isCorrect: false },
             { text: "console.log", isCorrect: true },
-        ],
-
-        
+        ]
     }
-]
+];
 
-quizQuestions.question1.answers1
 
+    

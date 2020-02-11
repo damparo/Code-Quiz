@@ -34,8 +34,8 @@ button {
     justify-content: center;
     
 }
-/*container for first question*/
-#questionone {
+/*container for questions*/
+#quiz {
     text-align: center;
     background-color:blue;
     position: absolute;
@@ -48,7 +48,10 @@ button {
     height: 500px;
     display: none;
 }
-#questiontwo {
+#answers {
+    list-style-type: none;
+}
+#results {
     text-align: center;
     background-color:green;
     position: absolute;
