@@ -9,6 +9,8 @@ var questionIndex = 0;
 var count = document.querySelector("#count");
 var score = 0;
 var correctMessage = document.querySelector("#display");
+var youRight = document.querySelector("#display");
+var itsOver = document.querySelector("#results");
 //prevent browser from refreshing
 //connect start button with hiding first block
 startQuiz.addEventListener("click", function(event){
@@ -51,10 +53,15 @@ function renderQuestion(){
 
     questionIndex++;
 }
+
+
 else {
-    //call and endGame function 
+
+    endgame();
+    
 }
 };
+
 
 
 //event listener for when an answer is clicked that calls a checkAnswer function
@@ -72,20 +79,21 @@ function checkAnswer (userAnswer) {
          //if answer is correct add to their score
         score++;
         count.textContent =score;
+        youRight.textContent = "Correct!!";
+        //add a window set timeout for the correct display for it to disappear for the next question
         renderQuestion();
     }
    else {
        //alert user or optionally you could change text in browser
-       alert("Sorry that was the wrong answer");
     //rerun render Question function;
     renderQuestion();
    } 
-
-   
-
-    //else 
+   //else 
 }
-
+  
+function endgame(){
+    document.getElementById("results").style.display = "block";
+}
 // go over the code above
 
 var questions = [

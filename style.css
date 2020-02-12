@@ -10,7 +10,7 @@
 }
 #container {
     text-align: center;
-    background-color:rgb(211, 211, 230);
+    background-color:white;
     position: absolute;
     margin: auto;
     top: 0;
@@ -45,7 +45,7 @@ button {
 /*container for questions*/
 #quiz {
     text-align: center;
-    background-color:rgb(211, 211, 230);
+    background-color:white;
     position: absolute;
     margin: auto;
     top: 0;
@@ -61,9 +61,13 @@ button {
 }
 
 #display {
-    background-color: rebeccapurple;
-    display: none
+    background-color: black;
+    display: block;
+    color: white;
 }
 
-
+#results { 
+    background-color: red;
+    display: none;
+}
 
